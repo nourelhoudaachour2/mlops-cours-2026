@@ -44,8 +44,9 @@ def scoring_pipeline(
     ingest_task.set_cpu_limit("500m").set_memory_limit("512Mi")
     kubernetes.set_timeout(ingest_task, 600)
 
+    # Gate 1 : le contrat de données (suite Great Expectations versionnée dans gx/)
     validate_task = validate_data(raw_data=ingest_task.outputs["raw_data"])
-    validate_task.set_memory_limit("512Mi")
+    validate_task.set_memory_limit("1Gi")
 
     prep_task = prepare_features(raw_data=ingest_task.outputs["raw_data"])
     prep_task.after(validate_task)  # gate : pas de préparation sans validation réussie
