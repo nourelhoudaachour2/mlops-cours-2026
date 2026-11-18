@@ -99,7 +99,6 @@ def prepare_features(
         split.metadata["positive_rate"] = round(float(y.mean()), 4)
 
 
-
 @dsl.component(base_image=PIPELINE_IMAGE, install_kfp_package=False)
 def detect_drift(
     reference_data: Input[Dataset],
@@ -224,7 +223,6 @@ def evaluate_model(
     # Le même rapport que reports/metrics.json de DVC, rangé avec le run MLflow
     MlflowClient(mlflow_uri).log_dict(run_id, results, str(METRICS_JSON))
     return float(results[cfg.primary_metric])
-
 
 
 @dsl.component(base_image=PIPELINE_IMAGE, install_kfp_package=False)
