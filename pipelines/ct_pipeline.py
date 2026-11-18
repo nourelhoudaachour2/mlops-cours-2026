@@ -1,4 +1,3 @@
-
 """Pipeline KFP « ct-pipeline » du Lab 6 : ré-entraînement déclenché par une dérive.
 
 ingest (lot récent) -> validate -> prepare -> train -> evaluate      composants du Lab 2
